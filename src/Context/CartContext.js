@@ -6,6 +6,27 @@ const defaultCart = JSON.parse(localStorage.getItem('cart')) || []
 
 const CartProvider = ({children}) => {
 
+  const [items, setItems] = useState(defaultCart);
+
+  useEffect(() => {
+    localStorage.setItems('cart', JSON.stringify(items))
+  }, [items])
+
+  const addToCart = (data, findCartItem) => {
+    if(!findCartItem){
+      return setItems((item) => [data, ...items] )
+    }
+
+    const filtered = items.filter((item) => item.id !== findCartItem.id )
+    setItems(filtered)
+  }
+
+  const removeFromCart = (item_id) => {
+    const filtered = items.filter((item) => item.id !== item_id)
+    setItems(filtered)
+  }
+
+  const values = {items, setItems, addToCart, removeFromCart}
   /**
    * 1. Create a state variable called items and a function to update it called setItems that is initialized to the defaultCart
    * 2. Create a useEffect hook that will run when the items state variable changes

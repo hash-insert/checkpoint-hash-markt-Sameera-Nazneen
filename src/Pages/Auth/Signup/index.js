@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Context/AuthContext'
 import validations from './validations'
 
+
 const Signup = () => {
   const {
     currentUser,
