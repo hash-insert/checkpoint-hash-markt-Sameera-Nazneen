@@ -6,6 +6,7 @@ import { useFavorite } from '../../Context/FavoriteContext'
 import { useCart } from '../../Context/CartContext'
 import Card from '../../Components/Card'
 
+
 const Favorites = () => {
   const { favoriteItems, addToFavorite } = useFavorite()
   const { addToCart, items } = useCart()
@@ -38,9 +39,26 @@ const Favorites = () => {
           </div>
         </div>
       )}
-      /**
-        * Your code goes here
-       */
+       {favoriteItems.length > 0 && (
+        <div className={styles.cardGroup}>
+          {favoriteItems.map((item) => {
+            const findFavoriteItem = favoriteItems.find(
+              (fav_item) => fav_item.id === item.id
+            )
+            const findCartItem = items.find((cart_item) => cart_item.id === item.id)
+            return (
+              <Card
+                item={item}
+                findFavoriteItem={findFavoriteItem}
+                favoriteItems={favoriteItems}
+                addToFavorite={addToFavorite}
+                addToCart={addToCart}
+                findCartItem={findCartItem}
+              />
+            )
+          })}
+        </div>
+      )}
     </div>
   )
 }
