@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../Context/AuthContext'
 import { LoginIcon } from '@heroicons/react/outline'
+import styles from './styles.module.css';
 
 const Signin = () => {
 
@@ -31,52 +32,55 @@ const Signin = () => {
   }, [loggedIn])
 
   return (
-    <div>
-      <div>
+    <div className={styles.formContainer}>
+      <div className={styles.form}>
         <div>
-          <h2>Login</h2>
+          <h2 className='styles.title text-center font-bold'>Login</h2>
         </div>
         <form
           autoComplete="off"
           onSubmit={handleSignIn}
+          className={styles.signInForm}
         >
-          <div>
+          <div className={styles.inputContainer}>
             <div>
-              <label>Email</label>
+              <label className='sr-only'>Email</label>
               <input
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
                 ref={emailRef}
                 placeholder="Email Address"
+                className={styles.input}
                 required
               />
             </div>
             <div>
-              <label>Password</label>
+              <label className='sr-only'>Password</label>
               <input
                 type="Password"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 required
                 placeholder="Password"
+                className={styles.input}
                 ref={passwordRef}
               />
             </div>
-            <div>
-              <div>
+            <div className={styles.linkBox}>
+              <div className={styles.linkDiv}>
                 <span>
                   Don't have an account? Sign up{" "}
-                  <Link to="/signup">
+                  <Link to="/signup" className="text-yellow-400 hover:underline">
                     {" "}
                     here.
                   </Link>
                 </span>
               </div>
             </div>
-            <div>
-              <button type="submit">
-                <LoginIcon aria1-hidden="true" />
+            <div className='text-center'>
+              <button type="submit" className={styles.button}>
+                <LoginIcon aria1-hidden="true" className="my-auto h-5 w-6" />
                 Login
               </button>
             </div>

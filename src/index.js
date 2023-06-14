@@ -13,11 +13,12 @@ ReactDOM.render(
     <AuthProvider>
       <ProductProvider>
         <CartProvider>
-          <FavoriteProvider>
+          //<FavoriteProvider>
             <BrowserRouter>
               <App />
             </BrowserRouter>
-          </FavoriteProvider>
+          //</FavoriteProvider>
+          
         </CartProvider>
       </ProductProvider>
     </AuthProvider>

@@ -22,6 +22,13 @@ const Products = () => {
   return (
     <div className={styles.cardGroup}>
       {!loading ? (
+        productList?.map((item, index)=>{
+          const findCartItem = items.find((cart_item) => cart_item.id === item.id )
+          const findFavoriteItem = favoriteItems.find((favorite_item) => favorite_item.id === item.id)
+            return (
+              <Card key={`product-${index}`} item={item} setProductID={setProductID} findCartItem={findCartItem} findFavoriteItem={findFavoriteItem} addToCart={addToCart} addToFavorite={addToFavorite} />
+            );
+        })
           /**
            * Your code goes here
            */
